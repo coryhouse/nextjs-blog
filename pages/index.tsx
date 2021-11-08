@@ -3,6 +3,8 @@ import Layout, { siteTitle } from "../components/layout";
 import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 import Date from "../components/date";
+import { getSortedPostsData } from "../lib/posts";
+import { GetStaticProps } from "next";
 
 export default function Home({ allPostsData }) {
   return (
@@ -38,13 +40,11 @@ export default function Home({ allPostsData }) {
   );
 }
 
-import { getSortedPostsData } from "../lib/posts";
-
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async (context) => {
   const allPostsData = getSortedPostsData();
   return {
     props: {
       allPostsData,
     },
   };
-}
+};
