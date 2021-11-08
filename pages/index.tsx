@@ -6,7 +6,16 @@ import Date from "../components/date";
 import { getSortedPostsData } from "../lib/posts";
 import { GetStaticProps } from "next";
 
-export default function Home({ allPostsData }) {
+export default function Home({
+  allPostsData,
+}: {
+  // Just doing ugly inline type here to show you can
+  allPostsData: {
+    date: string;
+    title: string;
+    id: string;
+  }[];
+}) {
   return (
     <Layout home>
       <Head>
